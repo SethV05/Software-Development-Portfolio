@@ -1,0 +1,409 @@
+/* =========================
+   GLOBAL SITE THEME
+========================= */
+
+body {
+    background: radial-gradient(circle at center, #0f172a, #020617);
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    margin-bottom: 0 !important;
+}
+
+main,
+.container,
+.row {
+    background: transparent !important;
+}
+
+.full-width {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    background-color: #020617 !important;
+    border-bottom: 2px solid #22c55e;
+}
+
+    .navbar a,
+    .navbar .nav-link,
+    .navbar .navbar-brand {
+        color: #22c55e !important;
+        font-weight: bold;
+    }
+
+    .navbar button,
+    .navbar form button {
+        color: #22c55e !important;
+        background: transparent !important;
+        border: none !important;
+        width: auto !important;
+        padding: 0 10px !important;
+        font-weight: bold;
+    }
+
+    .navbar form {
+        margin: 0;
+    }
+
+    .navbar .navbar-nav {
+        align-items: center;
+    }
+
+
+/* =========================
+   GENERAL PAGE LAYOUT
+========================= */
+
+.center-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 70px);
+    width: 100%;
+    padding: 25px;
+}
+
+.card-box {
+    background: #020617;
+    border: 2px solid #22c55e;
+    border-radius: 20px;
+    padding: 25px;
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+}
+
+.title {
+    font-size: 60px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    margin-bottom: 30px;
+    color: #9ca3af;
+}
+
+
+/* =========================
+   BUTTONS AND INPUTS
+========================= */
+
+.big-button {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin-top: 15px;
+    text-align: center;
+    background: linear-gradient(145deg, #22c55e, #15803d);
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+    .big-button:hover {
+        background: #16a34a;
+        color: white;
+    }
+
+    .big-button.secondary {
+        background: linear-gradient(145deg, #eab308, #ca8a04);
+    }
+
+        .big-button.secondary:hover {
+            background: #ca8a04;
+        }
+
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    background: #22c55e;
+    color: white;
+}
+
+    button:hover {
+        background: #16a34a;
+    }
+
+
+/* =========================
+   MESSAGES
+========================= */
+
+.error {
+    color: #f87171;
+    margin-bottom: 10px;
+}
+
+.success {
+    color: #4ade80;
+    margin-bottom: 10px;
+}
+
+
+/* =========================
+   HOME PAGE BACKGROUND
+========================= */
+
+.home-bg {
+    background: url('/images/background.webp') no-repeat center center;
+    background-size: cover;
+    min-height: calc(100vh - 70px);
+    position: relative;
+}
+
+    .home-bg::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+    }
+
+    .home-bg .card-box {
+        position: relative;
+        z-index: 1;
+    }
+
+
+/* =========================
+   BLACKJACK GAME PAGE
+========================= */
+
+.blackjack-page {
+    min-height: calc(100vh - 70px);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blackjack-table {
+    width: 95%;
+    max-width: 1200px;
+    min-height: 82vh;
+    background: radial-gradient(circle at center, #047857, #064e3b, #022c22);
+    border: 4px solid #22c55e;
+    border-radius: 40px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .game-header h1 {
+        font-size: 42px;
+        margin: 0;
+    }
+
+    .game-header h2 {
+        font-size: 24px;
+        margin: 0;
+        color: #facc15;
+    }
+
+.dealer-area,
+.player-area {
+    margin-top: 15px;
+}
+
+.middle-area {
+    margin: 15px auto;
+    max-width: 400px;
+}
+
+.bet-form input {
+    margin-bottom: 10px;
+}
+
+.hand-row {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.card-img {
+    background: white;
+    border-radius: 10px;
+    padding: 5px;
+    width: 90px;
+    height: 125px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.55);
+}
+
+    .card-img img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+.hidden-card {
+    background: linear-gradient(145deg, #7f1d1d, #450a0a);
+    color: white;
+    font-size: 42px;
+    font-weight: bold;
+}
+
+.game-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+    .game-actions form {
+        width: 180px;
+    }
+
+.result-message {
+    color: #facc15;
+    font-size: 28px;
+    margin-top: 10px;
+}
+
+
+/* =========================
+   STATS PAGE
+========================= */
+
+.stats-box {
+    max-width: 1100px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.stat-card {
+    background: #0f172a;
+    border: 1px solid #22c55e;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+    .stat-card h3 {
+        font-size: 16px;
+        color: #9ca3af;
+    }
+
+    .stat-card p {
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+    }
+
+.stats-table {
+    width: 100%;
+    margin-top: 20px;
+    color: white;
+    border-collapse: collapse;
+}
+
+    .stats-table th,
+    .stats-table td {
+        border-bottom: 1px solid #334155;
+        padding: 10px;
+    }
+
+    .stats-table th {
+        color: #22c55e;
+    }
+
+/* =========================
+   CARD FLIP ANIMATION
+========================= */
+
+.hidden-card {
+    background: linear-gradient(145deg, #7f1d1d, #450a0a);
+    color: white;
+    font-size: 42px;
+    font-weight: bold;
+    animation: pulseHiddenCard 1.2s infinite alternate;
+}
+
+@keyframes pulseHiddenCard {
+    from {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+    }
+
+    to {
+        transform: scale(1.03);
+        box-shadow: 0 0 20px rgba(239, 68, 68, 0.8);
+    }
+}
+
+.card-img {
+    animation: dealCard 0.35s ease-in-out;
+}
+
+@keyframes dealCard {
+    from {
+        opacity: 0;
+        transform: translateY(-15px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.flip-wrapper {
+    width: 90px;
+    height: 125px;
+    perspective: 1000px;
+}
+
+.flip-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    animation: flipIn 0.7s ease;
+    transform-style: preserve-3d;
+}
+
+@keyframes flipIn {
+    from {
+        transform: rotateY(180deg);
+    }
+
+    to {
+        transform: rotateY(0deg);
+    }
+}

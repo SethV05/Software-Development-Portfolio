@@ -1,0 +1,46 @@
+﻿@page
+@model RegisterModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="blackjack-page">
+    <div class="blackjack-table" style="max-width: 500px; margin: auto; padding: 30px;">
+
+        <h1 style="text-align:center;">Register</h1>
+
+        <form method="post">
+
+            <div style="margin-bottom: 15px;">
+                <input asp-for="Input.Email"
+                       placeholder="Email"
+                       style="width:100%; padding:10px; border-radius:8px; border:none;" />
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <input asp-for="Input.Password"
+                       type="password"
+                       placeholder="Password"
+                       style="width:100%; padding:10px; border-radius:8px; border:none;" />
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <input asp-for="Input.ConfirmPassword"
+                       type="password"
+                       placeholder="Confirm Password"
+                       style="width:100%; padding:10px; border-radius:8px; border:none;" />
+            </div>
+
+            <button type="submit" style="width:100%; padding:12px; border:none; border-radius:10px; background:#22c55e; color:white; font-size:16px;">
+                Register
+            </button>
+
+        </form>
+
+        <div style="margin-top: 15px; text-align:center;">
+            <a asp-page="./Login" style="color:#22c55e;">Already have an account? Login</a>
+        </div>
+
+    </div>
+</div>

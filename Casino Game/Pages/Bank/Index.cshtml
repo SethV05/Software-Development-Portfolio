@@ -1,0 +1,29 @@
+﻿@page
+@model SVassey_FinalProject_CPT206_A80H.Pages.Bank.IndexModel
+
+<div class="center-screen">
+    <div class="card-box">
+
+        <h1>Add Funds</h1>
+
+        <h2>Balance: $@Model.Balance.ToString("0.00")</h2>
+
+        @if (TempData["Error"] != null)
+        {
+            <p class="error">@TempData["Error"]</p>
+        }
+
+        @if (TempData["Success"] != null)
+        {
+            <p class="success">@TempData["Success"]</p>
+        }
+
+        <form method="post">
+            <input asp-for="AddAmount" type="number" step="0.01" placeholder="Enter Amount" />
+            <button type="submit" asp-page-handler="AddFunds">Add Funds</button>
+        </form>
+
+        <a class="big-button" asp-page="/Game/Index">Go Play Blackjack</a>
+
+    </div>
+</div>

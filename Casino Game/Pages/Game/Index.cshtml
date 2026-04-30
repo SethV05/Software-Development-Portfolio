@@ -1,0 +1,138 @@
+﻿@page
+@model SVassey_FinalProject_CPT206_A80H.Pages.Game.IndexModel
+
+@{
+    ViewData["Title"] = "Blackjack Game";
+}
+
+<div class="blackjack-page">
+    <div class="blackjack-table">
+
+        <div class="game-header">
+            <h1>Blackjack</h1>
+            <h2>Balance: $@Model.Balance.ToString("0.00")</h2>
+        </div>
+
+        @if (TempData["Error"] != null)
+        {
+            <p class="error">@TempData["Error"]</p>
+        }
+
+        <div class="dealer-area">
+            <h2>Dealer</h2>
+
+            <!-- Show dealer total only when game is over -->
+            <p>Total: @(Model.Game.IsGameOver ? Model.Game.GetDealerTotal().ToString() : "?")</p>
+
+            <div class="hand-row">
+                @for (int i = 0; i < Model.Game.DealerHand.Count; i++)
+                {
+                    // Show first card OR reveal all cards when game ends
+                    if (i == 0 || Model.Game.IsGameOver)
+                    {
+                        <div class="flip-wrapper">
+                            <div class="flip-inner">
+                                <div class="card-img">
+                                    <img src="@Model.Game.DealerHand[i].ImagePath" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        // Hide dealer's second card during gameplay
+                        <div class="card-img hidden-card">?</div>
+                    }
+                }
+            </div>
+        </div>
+
+        <div class="middle-area">
+
+            <form method="post" class="bet-form" onsubmit="playDeal()">
+                <input type="number" step="1" name="BetAmount" placeholder="Enter Bet" required />
+                <button type="submit" asp-page-handler="NewGame">Place Bet & Start</button>
+            </form>
+
+            @if (Model.Game.IsGameOver)
+            {
+                <h2 class="result-message">@Model.Game.ResultMessage</h2>
+            }
+        </div>
+
+        <div class="player-area">
+            <h2>Your Hand</h2>
+
+            <!-- Always show player's total -->
+            <p>Total: @Model.Game.GetPlayerTotal()</p>
+
+            <div class="hand-row">
+                @foreach (var card in Model.Game.PlayerHand)
+                {
+                    <!-- Display each card in player's hand -->
+                    <div class="flip-wrapper">
+                        <div class="flip-inner">
+                            <div class="card-img">
+                                <img src="@card.ImagePath" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="game-actions">
+
+            @if (!Model.Game.IsGameOver)
+            {
+                <form method="post" onsubmit="playDeal()">
+                    <button type="submit" asp-page-handler="Hit">Hit</button>
+                </form>
+
+                <form method="post">
+                    <button type="submit" asp-page-handler="Stand">Stand</button>
+                </form>
+            }
+            else
+            {
+                <form method="post">
+                    <button type="submit" asp-page-handler="NewGame">Play Again</button>
+                </form>
+            }
+        </div>
+
+    </div>
+</div>
+
+<!-- Sound effects -->
+<audio id="dealSound" src="/sounds/deal.wav"></audio>
+<audio id="winSound" src="/sounds/win.wav"></audio>
+<audio id="loseSound" src="/sounds/lose.wav"></audio>
+<audio id="bustSound" src="/sounds/bust.wav"></audio>
+
+<script>
+    function playDeal() {
+        document.getElementById("dealSound").play();
+    }
+
+    function playResult() {
+        let result = "@Model.Game.ResultMessage".toLowerCase();
+
+        if (result.includes("you win") || result.includes("dealer busted")) {
+            document.getElementById("winSound").play();
+        }
+        else if (result.includes("you busted")) {
+            document.getElementById("bustSound").play();
+        }
+        else if (result.includes("dealer wins")) {
+            document.getElementById("loseSound").play();
+        }
+    }
+</script>
+
+@if (Model.Game.IsGameOver)
+{
+    <script>
+        playResult();
+    </script>
+}

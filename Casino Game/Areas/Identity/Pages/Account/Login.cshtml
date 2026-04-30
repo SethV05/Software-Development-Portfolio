@@ -1,0 +1,53 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="blackjack-page">
+    <div class="blackjack-table" style="max-width: 500px; margin: auto; padding: 30px;">
+
+        <h1 style="text-align:center;">Login</h1>
+
+        <form method="post">
+
+            <div style="margin-bottom: 15px;">
+                <input asp-for="Input.Email"
+                       placeholder="Email"
+                       style="width:100%; padding:10px; border-radius:8px; border:none;" />
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <input asp-for="Input.Password"
+                       type="password"
+                       placeholder="Password"
+                       style="width:100%; padding:10px; border-radius:8px; border:none;" />
+            </div>
+
+            <div style="display:flex; justify-content:center; gap:40px; margin-bottom:20px;">
+
+                <label style="color:white; display:flex; align-items:center; gap:8px;">
+                    <input asp-for="Input.RememberMe" />
+                    Remember me
+                </label>
+
+                <label style="color:white; display:flex; align-items:center; gap:8px;">
+                    <input type="checkbox" name="HumanCheck" required />
+                    I am not a robot
+                </label>
+
+            </div>
+
+            <button type="submit" style="width:100%; padding:12px; border:none; border-radius:10px; background:#22c55e; color:white; font-size:16px;">
+                Log in
+            </button>
+
+        </form>
+
+        <div style="margin-top: 15px; text-align:center;">
+            <a asp-page="./Register" style="color:#22c55e;">Register</a>
+        </div>
+
+    </div>
+</div>
